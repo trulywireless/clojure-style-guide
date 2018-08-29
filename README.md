@@ -140,7 +140,7 @@ when there are no arguments on the same line as the function name.
     ```
 
 * <a name="vertically-align-let-and-map"></a>
-  Vertically align `let` bindings and map keywords.
+  Vertically align `let` bindings and map keys, but don't vertically align `let` bound values or map values.
 <sup>[[link](#vertically-align-let-and-map)]</sup>
 
     ```Clojure
@@ -155,6 +155,18 @@ when there are no arguments on the same line as the function name.
       thing2 "other stuff"]
       {:thing1 thing1
       :thing2 thing2})
+
+    ;; good
+    (let [thing1 "some stuff"
+          thing23 "other stuff"]
+      {:thing1 thing1
+       :thing23 thing23})
+
+    ;; bad (probably more readable but makes for noisy diffs, which we care about more in this case)
+    (let [thing1  "some stuff"
+          thing23 "other stuff"]
+      {:thing1  thing1
+       :thing23 thing2})
     ```
 
 * <a name="optional-new-line-after-fn-name"></a>
