@@ -122,30 +122,35 @@ forms and macros that introduce local bindings (e.g. `loop`, `let`,
     ;; good
     (do-this this-arg this-other-arg)
     
-    ;; good
     (do-this
       this-arg this-other-arg)
     
-    ;; good
     (do-this
       this-arg
       this-other-arg)
+    
+    (if condition
+      then
+      else)
+    
+    (if condition
+        then
+        else)
+        
+    (or 
+      this
+      that
+      other)
+    
+    (or this
+        that
+        other)
 
     ;; good only if line length doesn't permit `this-other-arg` on the same line
     (do-this this-arg
       this-other-arg)
-      
-    ;; good
-    (if condition
-      then
-      else)
-      
-    ;; also good
-    (if condition
-        then
-        else)
 
-    ;; okay
+    ;; only 'okay', because function name is a little long to align args with it 
     (my-function this-arg
                  this-other-arg)
         
