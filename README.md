@@ -157,6 +157,9 @@ on its own line and separating the pairs with a newline.
     (do-this
       this-arg
       this-other-arg)
+      
+    (do-this this-arg
+             this-other-arg)
     
     (if condition
         then
@@ -170,7 +173,7 @@ on its own line and separating the pairs with a newline.
     (do-this this-arg
       this-other-arg)
 
-    ;; okay
+    ;; okay (either function/macro name too long to align args, or too short to indent args)
     (my-function this-arg
                  this-other-arg)
                  
