@@ -71,18 +71,25 @@ Translations of the guide are available in the following languages:
 <sup>[[link](#spaces)]</sup>
 
 * <a name="body-indentation"></a>
-Use 2 spaces to indent the bodies of
-forms that have body parameters.  This covers all `def` forms, special
-forms and macros that introduce local bindings (e.g. `loop`, `let`,
-`when-let`) and many macros like `when`, `cond`, `as->`, `cond->`, `case`,
-`with-*`, etc.
+Use 2 spaces to indent the bodies of forms that have body parameters
+that span multiple lines. This covers all `def` forms, special forms
+and macros that introduce local bindings (e.g. `loop`, `let`, `when-let`)
+and many macros like `when`, `with-*`, `case`, `cond`, etc.
 <sup>[[link](#body-indentation)]</sup>
 
 
     ```Clojure
     ;; good
+    (when something (something-else))
+    
     (when something
       (something-else))
+      
+    (cond this that :else other)
+    
+    (cond
+      this that
+      :else other)
 
     (with-out-str
       (println "Hello, ")
@@ -98,28 +105,58 @@ forms and macros that introduce local bindings (e.g. `loop`, `let`,
      (println "world!"))
     ```
 
-* <a name="align-fn-args"></a>
-  Use 2 spaces to indent function (macro) arguments spanning multiple lines.
-<sup>[[link](#align-fn-args)]</sup>
+* <a name="align-args"></a>
+  Use 2 spaces (or else align the arguments, especially if the
+  function/macro name is short) to indent function (macro) arguments
+  spanning multiple lines.
+
+  Arguments that span multiple lines should either take up as much of
+  the line as possible, or they should take up one line each after the
+  function/macro name. The only exception to this rule is `if`, in
+  which case the conditional argument can be on the same line as the
+  `if` macro name.
+<sup>[[link](#align-args)]</sup>
 
     ```Clojure
     ;; good
-    (my-function
+    (do-this this-arg this-other-arg)
+    
+    ;; good
+    (do-this
       this-arg this-other-arg)
+    
+    ;; good
+    (do-this
+      this-arg
+      this-other-arg)
 
     ;; good only if line length doesn't permit `this-other-arg` on the same line
-    (my-function this-arg
+    (do-this this-arg
       this-other-arg)
+      
+    ;; good
+    (if condition
+      then
+      else)
+      
+    ;; also good
+    (if condition
+        then
+        else)
 
     ;; okay
     (my-function this-arg
                  this-other-arg)
-
+        
     ;; bad
     (my-function this-arg
             this-other-arg)
-
-
+        
+    ;; bad if the line breaks below happen despite args not filling max space on a line
+    (my-function this-arg
+      this-other-arg yet-another-arg
+      and-another-arg
+      one-other-arg and-maybe-another)
     ```
 
 * <a name="vertically-align-let-and-map"></a>
