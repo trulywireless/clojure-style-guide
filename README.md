@@ -72,9 +72,10 @@ Translations of the guide are available in the following languages:
 
 * <a name="body-indentation"></a>
 Use 2 spaces to indent the bodies of forms that have body parameters
-that span multiple lines. This covers all `def` forms, special forms
-and macros that introduce local bindings (e.g. `loop`, `let`, `when-let`)
-and many macros like `when`, `with-*`, `case`, `cond`, etc.
+that span multiple lines. This covers all `def` forms, special
+forms and macros that introduce local bindings (e.g. `loop`, `let`,
+`when-let`) and many macros like `when`, `cond`, `as->`, `cond->`, `case`,
+`with-*`, etc.
 <sup>[[link](#body-indentation)]</sup>
 
 
