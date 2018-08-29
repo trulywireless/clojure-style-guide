@@ -76,6 +76,10 @@ that span multiple lines. This covers all `def` forms, special
 forms and macros that introduce local bindings (e.g. `loop`, `let`,
 `when-let`) and many macros like `when`, `cond`, `as->`, `cond->`, `case`,
 `with-*`, etc.
+For macros that take pairs of arguments (e.g. `cond`, `cond->`, `case`),
+it is acceptable to group the pairs by either putting each pair on the same
+line or (especially when pairs are long) by putting each member of each pair
+on its own line and separating the pairs with a newline.
 <sup>[[link](#body-indentation)]</sup>
 
 
@@ -91,10 +95,35 @@ forms and macros that introduce local bindings (e.g. `loop`, `let`,
     (cond
       this that
       :else other)
+      
+    (cond
+      this 
+      that
+      
+      :else 
+      other)
 
     (with-out-str
       (println "Hello, ")
       (println "world!"))
+
+    ;; bad
+    (cond
+      this that
+      
+      :else 
+      other)
+      
+    (cond
+      this 
+      that
+      :else 
+      other)
+      
+    (cond
+      this that
+      :else 
+      other)
 
     ;; bad - four spaces
     (when something
