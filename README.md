@@ -159,17 +159,8 @@ on its own line and separating the pairs with a newline.
       this-other-arg)
     
     (if condition
-      then
-      else)
-    
-    (if condition
         then
         else)
-        
-    (or 
-      this
-      that
-      other)
     
     (or this
         that
@@ -179,9 +170,18 @@ on its own line and separating the pairs with a newline.
     (do-this this-arg
       this-other-arg)
 
-    ;; only 'okay', because function name is a little long to align args with it 
+    ;; okay
     (my-function this-arg
                  this-other-arg)
+                 
+    (if condition
+      then
+      else)
+      
+    (or 
+      this
+      that
+      other)
         
     ;; bad
     (my-function this-arg
