@@ -461,6 +461,26 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (:use clojure.zip))
     ```
 
+* <a name="prefer-namespace-alias-subset"></a>
+  When aliasing namespaces in an `ns` form `:require` section, prefer aliases
+  that are subsets of the original namespace name, with an eye towards keeping
+  the last segments of the original name.
+<sup>[[link](#prefer-namespace-alias-subset)]</sup>
+
+    ```Clojure
+    ;; good
+    (ns examples.ns
+      (:require [com.foocorp.task-processor.settings.account :as settings.account]))
+
+    ;; less good
+    (ns examples.ns
+      (:require [com.foocorp.task-processor.settings.account :as settings-account]))
+
+    ;; bad
+    (ns examples.ns
+      (:require [com.foocorp.task-processor.settings.account :as account-settings]))
+    ```
+
 * <a name="no-single-segment-namespaces"></a>
   Avoid single-segment namespaces.
 <sup>[[link](#no-single-segment-namespaces)]</sup>
