@@ -461,6 +461,47 @@ pairwise constructs as found in e.g. `let` and `cond`.
       (:use clojure.zip))
     ```
 
+* <a name="prefer-namespace-alias-subset"></a>
+  When aliasing namespaces in an `ns` form `:require` section, prefer aliases
+  that are subsets of the original namespace name, with an eye towards keeping
+  the last segments of the original name.
+<sup>[[link](#prefer-namespace-alias-subset)]</sup>
+
+    ```Clojure
+    ;; good
+    (ns examples.ns
+      (:require [com.foocorp.task-processor.settings.account :as settings.account]))
+
+    ;; less good
+    (ns examples.ns
+      (:require [com.foocorp.task-processor.settings.account :as settings-account]))
+
+    ;; bad
+    (ns examples.ns
+      (:require [com.foocorp.task-processor.settings.account :as account-settings]))
+    ```
+
+* <a name="prefer-full-namespace-requires"></a>
+  When requiring namespaces or importing classes in the `ns` form, prefer full 
+  listings for each namespace/class over the "prefix list" format.
+<sup>[[link](#prefer-full-namespace-requires)]</sup>
+
+    ```Clojure
+    ;; good
+    (ns examples.ns
+      (:require [com.foocorp.task-processor.settings.account :as settings.account]
+                [com.foocorp.task-processor.settings.person :as settings.person]
+                [com.foocorp.task-processor.util :as util]))
+
+    ;; less good
+    (ns examples.ns
+      (:require [com.foocorp.task-processor
+                  [settings
+                    [account :as account]
+                    [person :as person]]
+                  [util :as util]]))
+    ```
+
 * <a name="no-single-segment-namespaces"></a>
   Avoid single-segment namespaces.
 <sup>[[link](#no-single-segment-namespaces)]</sup>
